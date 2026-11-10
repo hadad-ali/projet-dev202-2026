@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
 // localhost:8000/
@@ -11,8 +12,6 @@ Route::get('/', function () {
 Route::get('/about-us', function () {
     return view('about');
 })->name('abt');
-
-
 
 Route::get(
     '/hello',
@@ -30,3 +29,16 @@ Route::get(
         );
     }
 );
+// ROUTES(url) MODEL(bd) VIEW(html) CONTROLLER(fonction)
+
+// /hello/h/ali
+
+// php artisan make:controller PagesController
+Route::get( '/hello/{gender}/{nom}',
+[PagesController::class, 'helloGender'] );
+
+// hello/mohamed => bonjour mohamed
+
+// hello/h/ali   =>  bonjour monsieur ali
+// hello/f/sara  => bonjour madame sara
+// hello/zdzd/sara  => bonjour sara
