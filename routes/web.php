@@ -4,41 +4,22 @@ use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
 // localhost:8000/
-Route::get('/', function () {
-    return view('home');
-})->name('hm');
+Route::get('/', [PagesController::class, 'home'])->name('hm');
 
 // localhost:8000/about-us
-Route::get('/about-us', function () {
-    return view('about');
-})->name('abt');
+Route::get('/about-us', [PagesController::class, 'about'])->name('abt');
 
 Route::get(
     '/hello',
-    function () {
-        return view('hello');
-    }
+    [PagesController::class, 'hello']
 );
 
 Route::get(
     '/hello/{nom}',
-    function ($nom) {
-        return view(
-            'hello',
-            compact('nom')
-        );
-    }
+    [PagesController::class, 'helloName']
 );
-// ROUTES(url) MODEL(bd) VIEW(html) CONTROLLER(fonction)
 
-// /hello/h/ali
+Route::get('/hello/{gender}/{nom}',
+    [PagesController::class, 'helloGender']);
 
-// php artisan make:controller PagesController
-Route::get( '/hello/{gender}/{nom}',
-[PagesController::class, 'helloGender'] );
-
-// hello/mohamed => bonjour mohamed
-
-// hello/h/ali   =>  bonjour monsieur ali
-// hello/f/sara  => bonjour madame sara
-// hello/zdzd/sara  => bonjour sara
+Route::get('/users',[PagesController::class, 'listUsers']);
