@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+
 class PagesController extends Controller
 {
     public function home()
@@ -38,9 +40,11 @@ class PagesController extends Controller
         return view('hello', compact('nom'));
     }
 
-    function listUsers(){
-
-
-    return view('users');
+    public function listUsers()
+    {
+        $usrs = User::all();
+        // dd($usrs);
+        return view('list'
+        ,compact('usrs'));
     }
 }
