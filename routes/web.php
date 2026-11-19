@@ -26,3 +26,14 @@ Route::get('/hello/{gender}/{nom}',
 Route::get('/users', [PagesController::class, 'listUsers']);
 
 Route::get('/products', [ProductsController::class, 'list']);
+
+
+//  /product/2 => adidas 150dh
+Route::get('/product/{id}',[ProductsController::class,'detail']);
+
+
+// detail d'un seule produit
+//  /product/1 => adidas 150dh
+//  /product/2 => nike 299dh
+
+
